@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option java_package = "nctu.winlab.ha5gup.proto";
+option go_package = "./;proto";
+
+service LoadBalancerAgent {
+  rpc Initialize(InitializeRequest) returns (google.protobuf.Empty) {}
+
+  rpc AddUpf(AddUpfRequest) returns(google.protobuf.Empty) {}
+  rpc DeleteUpf(DeleteUpfRequest) returns(google.protobuf.Empty) {}
+
+  rpc UpdatePfcpSession(UpdatePfcpSessionRequest) returns(google.protobuf.Empty) {}
+  rpc DeletePfcpSession(DeletePfcpSessionRequest) returns(google.protobuf.Empty) {}
+}
+
+message InitializeRequest {
+  enum CoreNetwork {
+    CORE_NETWORK_FREE5GC = 0;
+    CORE_NETWORK_OPEN5GS = 1;
+  }
+  CoreNetwork core_network = 1;
+  repeated UpfService upf_services = 2;
+}
+
+message AddUpfRequest {
+  string name = 1;
+  string upf_vip = 2;
+  string upf_dip = 3;
+  string node_ip = 4;
+}
+
+message DeleteUpfRequest {
+  string upf_vip = 1;
+  string upf_dip = 2;
+}
+
+message UpdatePfcpSessionRequest {
+  FSeid fseid = 1;
+  repeated FTeid fteids = 2;
+  string ue_ip = 3;
+}
+
+message DeletePfcpSessionRequest {
+  FSeid fseid = 1;
+}
+
+message UpfService {
+  string ipv4 = 1;
+  bool is_psa = 2;
+  string devId = 3;
+}
+
+message DataNetworkInfo {
+  string ipv4 = 1;
+  string mac = 2;
+  uint64 switch_port = 3;
+}
+
+message FSeid {
+  uint64 seid = 1;
+  string ipv4 = 2;
+}
+
+message FTeid {
+  uint32 teid = 1;
+  string ipv4 = 2;
+}

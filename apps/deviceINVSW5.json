@@ -1,0 +1,97 @@
+{
+  "devices": {
+    "device:tofino:invp4sw5": {
+      "ports": {
+        "15/0": {
+          "name": "15/0",
+          "speed": 10000,
+          "enabled": true,
+          "number": 175,
+          "removed": false,
+          "type": "copper"
+        },
+        "16/0": {
+          "name": "16/0",
+          "speed": 10000,
+          "enabled": true,
+          "number": 174,
+          "removed": false,
+          "type": "copper"
+        },
+        "17/0": {
+          "name": "17/0",
+          "speed": 10000,
+          "enabled": true,
+          "number": 189,
+          "removed": false,
+          "type": "copper"
+        },
+        "18/0": {
+          "name": "18/0",
+          "speed": 10000,
+          "enabled": true,
+          "number": 188,
+          "removed": false,
+          "type": "copper"
+        },
+        "27/0": {
+          "name": "27/0",
+          "speed": 10000,
+          "enabled": true,
+          "number": 35,
+          "removed": false,
+          "type": "copper"
+        },
+        "28/0": {
+          "name": "28/0",
+          "speed": 10000,
+          "enabled": true,
+          "number": 34,
+          "removed": false,
+          "type": "copper"
+        },
+        "29/0": {
+          "name": "29/0",
+          "speed": 10000,
+          "enabled": true,
+          "number": 16,
+          "removed": false,
+          "type": "copper"
+        },
+        "30/0": {
+          "name": "30/0",
+          "speed": 10000,
+          "enabled": true,
+          "number": 17,
+          "removed": false,
+          "type": "copper"
+        },
+        "31/0": {
+          "name": "31/0",
+          "speed": 10000,
+          "enabled": true,
+          "number": 18,
+          "removed": false,
+          "type": "copper"
+        },
+        "32/0": {
+          "name": "32/0",
+          "speed": 10000,
+          "enabled": true,
+          "number": 19,
+          "removed": false,
+          "type": "copper"
+        }
+      },
+      "basic": {
+        "managementAddress":"grpc://127.0.0.1:50051?device_id=0",
+        "driver": "barefoot",
+        "pipeconf": "org.onosproject.pipelines.upflb",
+        "deviceKeyId":"p4runtime:device:invp4sw5"
+      },
+      "thrift" :{
+          "port":9090
+      }
+    }
+  }
+}

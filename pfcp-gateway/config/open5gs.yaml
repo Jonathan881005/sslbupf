@@ -1,0 +1,7 @@
+coreNetwork: "open5gs"
+smfIp: "192.168.2.7"
+lbcGrpcEndpoint: "140.113.131.175:61337"
+upfServices:
+  - ipv4: "172.30.0.10"
+    isPsa: true
+    devId: "device:tofino:invp4sw5"

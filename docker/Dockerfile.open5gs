@@ -1,0 +1,24 @@
+FROM ubuntu:18.04
+
+# Required packages for building the source code
+RUN apt-get -y update
+RUN apt-get -y install wget curl python3-pip python3-setuptools python3-wheel ninja-build build-essential flex bison git libsctp-dev libgnutls28-dev libgcrypt-dev libssl-dev libidn11-dev libmongoc-dev libbson-dev libyaml-dev libnghttp2-dev libmicrohttpd-dev libcurl4-gnutls-dev libnghttp2-dev meson
+
+# Install all NFs at once
+WORKDIR /root
+RUN wget https://github.com/open5gs/open5gs/archive/v2.2.0.tar.gz && tar zxvf v2.2.0.tar.gz && rm v2.2.0.tar.gz
+WORKDIR /root/open5gs-2.2.0
+RUN meson build --prefix=`pwd`/install
+RUN ninja -C build
+WORKDIR /root/open5gs-2.2.0/build
+RUN ninja install
+
+# Install WebUI
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN apt-get -y install nodejs
+WORKDIR /root/open5gs-2.2.0/webui
+RUN npm ci --no-optional
+WORKDIR /root/open5gs-2.2.0
+
+# Install tools
+RUN apt-get -y install iputils-ping iproute2 tcpdump iptables net-tools iftop

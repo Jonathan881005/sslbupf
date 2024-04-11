@@ -1,0 +1,13 @@
+coreNetwork: "free5gc"
+smfIp: "192.168.2.7"
+lbcGrpcEndpoint: "140.113.131.175:61337"
+upfServices:
+  - ipv4: "172.30.0.10"
+    isPsa: false
+    devId: "device:tofino:invp4sw5"
+  - ipv4: "172.30.0.100"
+    isPsa: true
+    devId: "device:tofino:invp4sw5"
+  - ipv4: "172.30.0.200"
+    isPsa: true
+    devId: "device:tofino:invp4sw5"
